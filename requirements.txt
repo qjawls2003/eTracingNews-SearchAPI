@@ -4,3 +4,4 @@ opensearch-py
 openai
 boto3
 mysql
+pydantic
