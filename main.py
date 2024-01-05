@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from .functions.getEmbedding import getEmbedding
-from .functions.getSearch import getSearchResult
+from functions.getEmbedding import getEmbedding
+from functions.getSearch import getSearchResult
 
 app = FastAPI()
 
@@ -10,8 +10,8 @@ def read_root():
 
 @app.post("/search/")
 def perform_search(query):
-    user_query = query.message
-    vector = getEmbedding(user_query)
+    #user_query = query.message
+    vector = getEmbedding(query)
     result = getSearchResult(vector)
     return result
 

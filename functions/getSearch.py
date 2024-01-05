@@ -1,7 +1,7 @@
 from opensearchpy import OpenSearch, RequestsHttpConnection, AWSV4SignerAuth
 import boto3
 from botocore.exceptions import ClientError
-from getEmbedding import getEmbedding
+
 
 def getSearchResult(vector):
     host = 'search-blognewsos-3b5n5ccmivrx6jqjtdcz3qe4si.us-east-1.es.amazonaws.com' 
@@ -39,5 +39,5 @@ def getSearchResult(vector):
     )
     return response
 
-if __name__ == '__main__':
-    print(getEmbedding("cybersecurity news for malware"))
+
+    
