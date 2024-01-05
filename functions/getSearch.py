@@ -26,7 +26,7 @@ def getSearchResult(vector):
     response = client.search(
         index = index_name,
         body = body,
-        _source_excludes = ["vector_field"]
+        _source_excludes = ["vector_field","hash"]
     )
     return response['hits']['hits']
 
