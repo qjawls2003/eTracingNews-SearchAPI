@@ -1,0 +1,26 @@
+PUT blog-news-index
+{
+"settings": {
+   "index.knn": true
+},
+"mappings": {
+   "properties": {
+      "vector_field": {
+          "type": "knn_vector",
+          "dimension": 1536
+     },
+     "hash": {
+        "type": "text"
+     }
+   }
+ }
+}
+
+POST blog-news-index/_delete_by_query
+{
+  "query": {
+    "match_all": {
+      
+    }
+  }
+}

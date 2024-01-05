@@ -21,13 +21,14 @@ def getSearchResult(vector):
     except ClientError as e:
         raise e
     index_name = 'blog-news-index'
-    body = {"size":10,"query":{"knn":{"vector_field":{"vector":vector, "k":100}}}}
+    body = {"size":10,"query":{"knn":{"vector_field":{"vector":vector, "k":10}}}}
 
     response = client.search(
         index = index_name,
-        body = body
+        body = body,
+        _source_excludes = ["vector_field"]
     )
-    return response
+    return response['hits']['hits']
 
 
     
