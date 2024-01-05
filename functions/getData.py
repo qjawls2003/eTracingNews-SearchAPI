@@ -44,7 +44,7 @@ class Feeds:
         return feeds
 
     def getFromRDS(self,connection_config,hashes:dict):
-        ids = ','.join("'"+hash+"'" for hash in hashes.keys)
+        ids = ','.join("'"+hash+"'" for hash in hashes.keys())
         print(ids)
         try:
             connection = mysql.connector.connect(**connection_config)
