@@ -8,7 +8,7 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
-@app.post("/search/")
+@app.post("/search")
 def perform_search(query):
     user_query = query.message
     vector = getEmbedding.getEmbedding(query)
