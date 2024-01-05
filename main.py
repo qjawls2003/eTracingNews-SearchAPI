@@ -13,7 +13,7 @@ app = FastAPI()
 def read_root():
     return {"Hello": "World"}
 
-@app.post("/search/")
+@app.post("/search")
 async def perform_search(user_query:Query):
     query = user_query.message
     vector = getEmbedding.getEmbedding(query)
