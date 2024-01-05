@@ -27,12 +27,12 @@ class Feeds:
 
     def getFeeds(self, result):
         
-        hashes = []
+        hashes = {}
         if len(result) == 0:
             return []
         
         for items in result:
-            hashes.append(items['_id'])
+            hashes[items['_id']] = items['_score']
 
         connection_config = {
             'host': self.rds_proxy_host,
@@ -43,8 +43,8 @@ class Feeds:
         feeds = self.getFromRDS(connection_config,hashes)
         return feeds
 
-    def getFromRDS(self,connection_config,hashes):
-        ids = ','.join("'"+hash+"'" for hash in hashes)
+    def getFromRDS(self,connection_config,hashes:dict):
+        ids = ','.join("'"+hash+"'" for hash in hashes.keys)
         print(ids)
         try:
             connection = mysql.connector.connect(**connection_config)
@@ -59,12 +59,13 @@ class Feeds:
                 json_data = []
                 for row in rows:
                     json_row = dict(zip(field_names, row))
+                    json_row['score'] = hashes[json_row['url_md5']]
                     json_data.append(json_row)
 
                 # Convert the list to a JSON string
                 json_strings = json.dumps(json_data, indent=2, cls=DateEncoder)
                 print('Retrieved Data (JSON):')
-                print(len(json_data))
+                print(len(json_strings))
                 return json_strings
                 
                 
