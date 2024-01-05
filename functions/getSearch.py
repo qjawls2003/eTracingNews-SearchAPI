@@ -33,9 +33,12 @@ def getSearchResult(vector):
         }
         }
 
-    response = client.index(
+    response = client.search(
         index = index_name,
-        body = body
+        body = body,
+        _source =True,
+        _source_includes = ["_id"],
+        size = 10
     )
     return response
 
