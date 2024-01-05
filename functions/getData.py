@@ -51,7 +51,7 @@ class Feeds:
             if connection.is_connected():
                 cursor = connection.cursor()
                 query = "SELECT * FROM blog_news_1.Articles where url_md5 in ({})".format(ids)
-                print(query)
+                #print(query)
                 cursor.execute(query)
                 rows = cursor.fetchall()
                 field_names = [i[0] for i in cursor.description]
