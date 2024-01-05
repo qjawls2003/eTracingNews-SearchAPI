@@ -45,7 +45,7 @@ class Feeds:
 
     def getFromRDS(self,connection_config,hashes:dict):
         ids = ','.join("'"+hash+"'" for hash in hashes.keys())
-        print(ids)
+        #print(ids)
         try:
             connection = mysql.connector.connect(**connection_config)
             if connection.is_connected():
@@ -64,8 +64,8 @@ class Feeds:
 
                 # Convert the list to a JSON string
                 json_strings = json.dumps(json_data, indent=2, cls=DateEncoder)
-                print('Retrieved Data (JSON):')
-                print(len(json_strings))
+                #print('Retrieved Data (JSON):')
+                #print(len(json_strings))
                 return json_strings
                 
                 

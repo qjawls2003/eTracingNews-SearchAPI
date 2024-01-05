@@ -18,10 +18,10 @@ async def perform_search(user_query:Query):
     query = user_query.query
     vector = getEmbedding.getEmbedding(query)
     result = getSearch.getSearchResult(vector)
-    print("Length of result: ",len(result))
+    #print("Length of result: ",len(result))
     feeder = Feeds()
     data = feeder.getFeeds(result)
-    print("Length of data: ",len(data))
+    #print("Length of data: ",len(data))
     return data
 
 
