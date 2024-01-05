@@ -28,7 +28,7 @@ def getSearchResult(vector):
         body = body,
         _source_excludes = ["vector_field","hash"]
     )
-    print(response['hits']['hits'])
+    #print(response['hits']['hits'])
     return response['hits']['hits']
 
 

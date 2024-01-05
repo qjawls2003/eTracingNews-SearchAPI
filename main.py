@@ -10,7 +10,7 @@ def read_root():
 
 @app.post("/search/")
 def perform_search(query):
-    #user_query = query.message
+    user_query = query.message
     vector = getEmbedding.getEmbedding(query)
     result = getSearch.getSearchResult(vector)
     print("Length of result: ",len(result))
