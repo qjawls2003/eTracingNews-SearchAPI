@@ -16,6 +16,7 @@ def perform_search(query):
     print("Length of result: ",len(result))
     feeder = Feeds()
     data = feeder.getFeeds(result)
+    print("Length of data: ",len(data))
     return data
 
 

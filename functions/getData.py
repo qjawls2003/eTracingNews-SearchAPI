@@ -44,11 +44,14 @@ class Feeds:
         return feeds
 
     def getFromRDS(self,connection_config,hashes):
+        ids = ','.join(hash for hash in hashes)
+        print(ids)
         try:
             connection = mysql.connector.connect(**connection_config)
             if connection.is_connected():
                 cursor = connection.cursor()
-                query = "SELECT * FROM blog_news_1.Articles where url_md5 in ({})".format(','.join(hash for hash in hashes))
+                query = "SELECT * FROM blog_news_1.Articles where url_md5 in ({})".format(ids)
+                print(query)
                 cursor.execute(query)
                 rows = cursor.fetchall()
                 field_names = [i[0] for i in cursor.description]
