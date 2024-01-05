@@ -16,6 +16,7 @@ def read_root():
 @app.post("/search")
 async def perform_search(user_query:Query):
     query = user_query.query
+    print(query)
     vector = getEmbedding.getEmbedding(query)
     result = getSearch.getSearchResult(vector)
     #print("Length of result: ",len(result))
