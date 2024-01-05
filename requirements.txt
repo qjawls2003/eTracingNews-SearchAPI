@@ -1,3 +1,5 @@
 fastapi
 uvicorn
 opensearch-py
+openai
+boto3
