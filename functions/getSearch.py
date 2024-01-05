@@ -36,9 +36,7 @@ def getSearchResult(vector):
     response = client.search(
         index = index_name,
         body = body,
-        _source =True,
-        _source_includes = ["_id"],
-        size = 10
+        _source =["id","vector_field"]
     )
     return response
 
